@@ -14,17 +14,6 @@ const ash = require("express-async-handler");
 //     .then(tasks => res.status(200).json(tasks))
 //     .catch(err => next(err));
 // });
-
-/** GET ALL COURSES: async/await */
-// router.get('/', async (req, res, next) => {
-//   try {
-//     let courses = await Course.findAll({include: [Instructor]});
-//     res.status(200).json(courses);
-//   } catch(err) {
-//     next(err);
-//   }
-// });
-
 /** GET ALL tasks: express-async-handler (ash) */
 // automatically catches any error and sends to middleware
 // same as using try/catch and calling next(error)
@@ -34,32 +23,7 @@ router.get("/", ash(async (req, res) => {
   })
 );
 
-/** GET task BY ID */
-router.get(
-  "/:id",
-  ash(async (req, res) => {
-    let task = await Task.findByPk(req.params.id, { include: [Employee] });
-    res.status(200).json(task);
-  })
-);
 
-/** ADD NEW task */
-router.post("/", function (req, res, next) {
-  Task.create(req.body)
-    .then((createdTask) => res.status(200).json(createdTask))
-    .catch((err) => next(err));
-});
-
-/** DELETE task */
-router.delete("/:id", function (req, res, next) {
-  Task.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then(() => res.status(200).json("Deleted a task!"))
-    .catch((err) => next(err));
-});
 
 /******************* EDIT *********************/
 
