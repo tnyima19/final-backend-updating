@@ -8,7 +8,22 @@ const { Employee, Task } = require("../database/models");
 // them to the error-handling middleware (defined in app.js)
 const ash = require("express-async-handler");
 
+/** GET ALL COURSES: then/catch */
+// router.get('/', function(req, res, next) {
+//   Course.findAll({include: [Employee]})
+//     .then(tasks => res.status(200).json(tasks))
+//     .catch(err => next(err));
+// });
 
+/** GET ALL COURSES: async/await */
+// router.get('/', async (req, res, next) => {
+//   try {
+//     let courses = await Course.findAll({include: [Instructor]});
+//     res.status(200).json(courses);
+//   } catch(err) {
+//     next(err);
+//   }
+// });
 
 /** GET ALL tasks: express-async-handler (ash) */
 // automatically catches any error and sends to middleware
