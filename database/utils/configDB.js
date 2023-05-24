@@ -7,9 +7,3 @@ module.exports = {
   dbUser,
   dbPwd,
 };
-//npm i 
-// npm start 
-
-
-// localhost:5001/api/instructors 
-//---------
